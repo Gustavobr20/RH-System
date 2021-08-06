@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="site-content">
+    <h3 class="text-center mt-5">Cadastrar novo departamento</h3>
+    <div class="container">
+        <form method="post" class="form" autocomplete="off">
+            {% csrf_token %}
+            <p>
+                <label hidden for="id_company">Company:</label>
+                <select hidden name="company" class="form-control" required id="id_company">
+                    <option value="{{ company.id }}">{{ company.name }}</option>
+                </select>
+            </p>
+            <p>
+                <label for="id_name">Departamento:</label>
+                <input type="text" name="name" class="form-control" required id="id_name">
+            </p>
+            <p>
+                <label for="id_status">Status:</label>
+                <input type="checkbox" name="status" required id="id_status">
+            </p>
+            <p>
+                <label for="id_Admin">Admin:</label>
+                <select class="form-control" name="Admin" required id="id_Admin">
+                    <option value="{{ user.id }}">{{ user }}</option>
+                </select>
+            </p>
+            <button type="submit" class="btn btn-info">Cadastrar</button>
+            <a href="{% url 'index' %}" class="btn btn-danger text-light">Cancelar</a>
+        </form>
+    </div>
+</div>
+<!--Rodapé-->
+{% include 'footer.html' %}
+
+{% endblock %}

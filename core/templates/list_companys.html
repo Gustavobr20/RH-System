@@ -1,0 +1,35 @@
+{% load static %}
+
+{% block content %}
+<main class="site-content">
+    <div class="container mt-4">
+        <h3 class="text-center mt-5">Empresas</h3>
+        <a href="{% url 'companys' %}" class="btn btn-primary">Novo <i class="far fa-plus-square"></i></a>
+        <table class="table mt-4">
+            <thead class="text-center bg-secondary text-light">
+                <tr>
+                    <th scope="col">Nome Fantasia</th>
+                    <th scope="col">CNPJ</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            {% for c in companys %}
+            <tbody class="text-center">
+                <tr>
+                    <th scope="col">{{ c.name }}</th>
+                    <th scope="col">{{ c.legal_number }}</th>
+                    <th scope="col"><a href="{% url 'departments' c.id %}" class="btn btn-info text-light">Departamentos <i class="fas fa-angle-double-right"></i></a></th>
+                    <th scope="col"><a href="{% url 'employees' c.id %}" class="btn btn-success text-light">Funcionários <i class="fas fa-angle-double-right"></i></a></th>
+                    <th scope="col"><a href="{% url 'update_company' c.id %}" class="btn btn-warning text-dark">Editar <i class="fas fa-edit"></i></a></th>
+                    <th scope="col"><a href="{% url 'delete_company' c.id %}" class="btn btn-danger text-light">Deletar <i class="fas fa-trash-alt"></i></a></th>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+
+</main>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="site-content">
+    <h3 class="text-center mt-5">Cadastrar nova empresa</h3>
+    <div class="container">
+        <form method="post" class="form" autocomplete="off">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-info">Cadastrar</button>
+            <a href="{% url 'index' %}" class="btn btn-danger text-light">Cancelar</a>
+        </form>
+    </div>
+</div>
+<!--Rodapé-->
+{% include 'footer.html' %}
+
+{% endblock %}

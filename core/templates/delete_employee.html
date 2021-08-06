@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="site-content">
+  <div class="container text-center">
+    <form method="post">
+      {% csrf_token %}
+      <h2 class=" mt-5">Quer mesmo excluir o funcionário(a): {{ employee.name }}?</h2>
+      <button type="submit" class="btn btn-danger mt-3">Excluir</button>
+      <a href="{% url 'index' %}" class="btn btn-success mt-3">Cancelar</a>
+    </form>
+  </div>
+</div>
+<!--Rodapé-->
+{% include 'footer.html' %}
+
+{% endblock %}
